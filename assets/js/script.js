@@ -25,21 +25,26 @@ let index = 0
 celciusConverterForm.addEventListener('submit', 
     e => {
         e.preventDefault()
-        const temp = new FormData(e.target).get('temp')
-        const fahrenheit = (parseInt(temp) * 9/5) + 32
-        const reamur = parseInt(temp) * 4/5
-        const kelvin = parseInt(temp) + 273.15
-
-        const trow = elementor('tr', [], undefined, undefined)
-        const tdIndex = elementor('td', [], index, trow)
-        const tdFahrenheit = elementor('td', [], fahrenheit, trow)
-        const tdReamur = elementor('td', [], reamur, undefined)
-        const tdKelvin = elementor('td', [], kelvin, undefined)
-
-        trow.append(tdIndex, tdFahrenheit, tdReamur, tdKelvin)
-
-        tbodyHistory.appendChild(trow)
-        
-        index++
+        const temp = parseInt(new FormData(e.target).get('temp'))
+        if(typeof temp === 'number'){
+            const fahrenheit = (temp * 9/5) + 32
+            const reamur = temp * 4/5
+            const kelvin = temp + 273.15
+    
+            const trow = elementor('tr', [], undefined, undefined)
+            const tdIndex = elementor('td', [], index+1, trow)
+            const tdCelcius = elementor('td', [], `${temp}°`, trow)
+            const tdFahrenheit = elementor('td', [], `${fahrenheit}°`, trow)
+            const tdReamur = elementor('td', [], `${reamur}°`, undefined)
+            const tdKelvin = elementor('td', [], `${kelvin}°`, undefined)
+    
+            trow.append(tdIndex, tdCelcius, tdFahrenheit, tdReamur, tdKelvin)
+    
+            tbodyHistory.appendChild(trow)
+            
+            index++
+        }else{
+            alert("Input suhu harus berupa angka")
+        }
     }
 )
