@@ -26,7 +26,7 @@ celciusConverterForm.addEventListener('submit',
     e => {
         e.preventDefault()
         const temp = parseInt(new FormData(e.target).get('temp'))
-        if(typeof temp === 'number'){
+        if(typeof temp === 'number' && !isNaN(temp)){
             const fahrenheit = (temp * 9/5) + 32
             const reamur = temp * 4/5
             const kelvin = temp + 273.15
