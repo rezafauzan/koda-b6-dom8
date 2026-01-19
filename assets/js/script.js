@@ -6,7 +6,7 @@ if (histories === null) {
 } else {
     histories.forEach(
         history => {
-            $("#convert-history tbody").append(`<tr><td>${index + 1}°</td><td>${history.celcius}°</td><td>${ history.fahrenheit }°</td><td>${history.reamur}°</td><td>${ history.kelvin }°</td></tr>`)
+            $("#convert-history tbody").append(`<tr></tr>`).append(`<td>${index + 1}°</td>`).append(`<td>${history.celcius}°</td>`).append(`<td>${ history.fahrenheit }°</td>`).append(`<td>${history.reamur}°</td>`).append(`<td>${ history.kelvin }°</td>`)
             index++
         }
     )
@@ -26,8 +26,7 @@ $('#celcius-converter-form').on('submit',
                 }
             )
 
-            
-            $("#convert-history tbody").append(`<tr><td>${index+1}°</td><td>${temp}°</td><td>${ (temp * 9 / 5) + 32 }°</td><td>${temp * 4 / 5}°</td><td>${ temp + 273.15 }°</td></tr>`)
+            $("#convert-history tbody").append(`<tr></tr>`).append(`<td>${index+1}°</td>`).append(`<td>${temp}°</td>`).append(`<td>${ (temp * 9 / 5) + 32 }°</td>`).append(`<td>${temp * 4 / 5}°</td>`).append(`<td>${ temp + 273.15 }°</td>`)
             
             window.localStorage.setItem('convert-histories', JSON.stringify(histories))
             index++
