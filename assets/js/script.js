@@ -82,3 +82,13 @@ celciusConverterForm.addEventListener('submit',
         }
     }
 )
+
+const btnReset = document.getElementById('reset')
+
+btnReset.addEventListener('click', 
+    ()=>{
+        tbodyHistory.innerHTML = ''
+        index = 0
+        window.localStorage.removeItem('convert-histories')
+    }
+)
